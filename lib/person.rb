@@ -44,10 +44,7 @@ class Person
     end
 
     def happiness=(happiness)
-        @happiness = min_max(happiness)
-        
-
-        
+        @happiness = min_max(happiness)       
     end
 
     def happiness
@@ -56,7 +53,6 @@ class Person
 
     def hygiene=(hygiene)
         @hygiene = min_max(hygiene)
-        
     end
 
     def hygiene
@@ -69,31 +65,33 @@ class Person
     end
 
     def take_bath
-        @hygiene += 4
-        hygiene=(@hygiene)
+        self.hygiene += 4
         p "♪ Rub-a-dub just relaxing in the tub ♫"
     end
     
     def work_out
-        @happiness += 2
-        @hygiene -= 3
-        @happiness = min_max(@happiness)
-        @hygiene = min_max(@hygiene)
+        self.happiness += 2
+        self.hygiene -= 3
         p "♪ another one bites the dust ♫"
     end
 
     def call_friend(friend)
-        #binding.pry
-        #friend.new
+        self.happiness += 3
+        friend.happiness += 3
+        p "Hi #{friend.name}! It's #{@name}. How are you?"
     end
 
-    def start_conversation(initiator, topic)
+    def start_conversation(friend, topic)
         if topic == "politics"
-            @happiness -= 1
-            min_max(@happiness)
-        if topic == "weather"
-
-            end
+            self.happiness -= 2
+            friend.happiness -= 2
+            p "blah blah partisan blah lobbyist"
+        elsif topic == "weather"
+            self.happiness += 1
+            friend.happiness += 1
+            p "blah blah sun blah rain"
+        else
+            p "blah blah blah blah blah"
         end
     end
 
